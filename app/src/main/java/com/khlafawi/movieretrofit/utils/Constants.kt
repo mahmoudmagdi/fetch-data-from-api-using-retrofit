@@ -4,6 +4,6 @@ object Constants {
 
     const val BASE_URL = "https://api.themoviedb.org/"
     const val POSTER_BASE_URL = "https://image.tmdb.org/t/p/original/"
-    const val API_KEY = "e6fa82941c0636c71720fceec76bc5d3"
+    const val API_KEY = "<PUT_YOUR_API_KEY>" //TODO: get your API key from this URL https://www.themoviedb.org
 
 }
