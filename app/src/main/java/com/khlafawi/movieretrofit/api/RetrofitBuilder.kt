@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
+// TODO: STEP(2): create the retrofit builder object
 object RetrofitBuilder {
 
     private val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -31,3 +32,4 @@ object RetrofitBuilder {
         retrofit.create(ApiInterface::class.java)
     }
 }
+// TODO: STEP(2): create the retrofit builder object
