@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
+// TODO: STEP(5): create the model classes that retrofit functions receives
 @Entity(tableName = "movies_table")
 @Parcelize
 @JsonClass(generateAdapter = true)
@@ -29,6 +30,22 @@ data class Movie(
     val overview: String
 ) : Parcelable
 
+@Parcelize
+@JsonClass(generateAdapter = true)
+data class MoviesResponse(
+    @SerializedName("page")
+    val page: Int,
+
+    @SerializedName("results")
+    val results: List<Movie>,
+
+    @SerializedName("total_results")
+    val total_results: Int,
+
+    @SerializedName("total_pages")
+    val total_pages: Int
+) : Parcelable
+
 fun List<Movie>.asDatabaseModel(): Array<Movie> {
     return map {
         Movie(
@@ -39,3 +56,4 @@ fun List<Movie>.asDatabaseModel(): Array<Movie> {
         )
     }.toTypedArray()
 }
+// TODO: STEP(5): create the model classes that retrofit functions receives
