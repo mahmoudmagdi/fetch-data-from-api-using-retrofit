@@ -7,16 +7,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.khlafawi.movieretrofit.database.MoviesDataBase
 import com.khlafawi.movieretrofit.model.Movie
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    private val database: MoviesDataBase,
+    private val mainRepo: DataSource,
     application: Application
 ) : ViewModel() {
-
-    private val mainRepo = MainRepository(database)
 
     private val _topRatedMoviesList = MutableLiveData<List<Movie>>()
     val topRatedMoviesList: LiveData<List<Movie>>
@@ -26,17 +24,17 @@ class MainViewModel(
         viewModelScope.launch {
             try {
                 mainRepo.refreshData()
+                getTopRatedMovies()
             } catch (e: Exception) {
                 Log.e("MainViewModel", e.message.toString())
                 Toast.makeText(application, "Failure: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
-        getTopRatedMovies()
     }
 
-    private fun getTopRatedMovies() {
+    fun getTopRatedMovies() {
         viewModelScope.launch {
-            database.moviesDatabaseDao.getAllMovies().collect {
+            mainRepo.getAllMovies().collect {
                 _topRatedMoviesList.value = it
             }
         }

@@ -11,5 +11,11 @@ interface ApiInterface {
 
     @GET("3/movie/top_rated")
     fun getTopRatedMoviesAsync(@Query("api_key") apiKey: String = API_KEY): Deferred<MoviesResponse>
+
+    @GET("3/movie/movies")
+    fun getMoviesAsync(@Query("api_key") apiKey: String = API_KEY): Deferred<MoviesResponse>
+
+    @GET("3/movie/authors")
+    fun getAuthirsAsync(@Query("api_key") apiKey: String = API_KEY): Deferred<MoviesResponse>
 }
 // TODO: STEP(4): build the retrofit interface with required functions
