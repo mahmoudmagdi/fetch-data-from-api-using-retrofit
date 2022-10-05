@@ -117,8 +117,6 @@ dependencies {
     implementation "io.insert-koin:koin-android:3.2.2"
 
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation "org.mockito:mockito-core:2.28.2"
-    androidTestImplementation 'org.mockito:mockito-android:2.24.5'
     // Koin for JUnit 4
     androidTestImplementation "io.insert-koin:koin-test-junit4:3.2.2"
     androidTestImplementation project(path: ':app') // for unit testing
